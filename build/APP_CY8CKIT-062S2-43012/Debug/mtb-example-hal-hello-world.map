@@ -9773,7 +9773,7 @@ END GROUP
                 0x100018d0                        __cy_m0p_code_end = .
                 0x00000001                        ASSERT ((__cy_m0p_code_end <= (ORIGIN (flash) + FLASH_CM0P_SIZE)), CM0+ flash image overflows with CM4, increase FLASH_CM0P_SIZE)
 
-.text           0x10002000     0x15d0
+.text           0x10002000     0x15f8
                 0x10002000                        . = ALIGN (0x4)
                 0x10002000                        __Vectors = .
  *(.vectors)
@@ -9989,174 +9989,175 @@ END GROUP
  .text.Cy_SystemInitFpuEnable
                 0x100024b8       0x28 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
                 0x100024b8                Cy_SystemInitFpuEnable
- .text.main     0x100024e0       0x48 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
+ .text.main     0x100024e0       0x6c /home/pranav/mtw/Hello_World/build/Debug/local/main.o
                 0x100024e0                main
- .text          0x10002528       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
-                0x10002528                Cy_SysLib_DelayCycles
-                0x1000253a                Cy_SysLib_EnterCriticalSection
-                0x10002542                Cy_SysLib_ExitCriticalSection
+ *fill*         0x1000254c        0x4 
+ .text          0x10002550       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
+                0x10002550                Cy_SysLib_DelayCycles
+                0x10002562                Cy_SysLib_EnterCriticalSection
+                0x1000256a                Cy_SysLib_ExitCriticalSection
  .text.Cy_PDL_Init
-                0x10002548        0xc /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
-                0x10002548                Cy_PDL_Init
+                0x10002570        0xc /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+                0x10002570                Cy_PDL_Init
  .text.Cy_IPC_Drv_GetIpcBaseAddress
-                0x10002554       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+                0x1000257c       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
  .text.Cy_Flash_ProcessOpcode
-                0x10002578       0xd0 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+                0x100025a0       0xd0 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
  .text.Cy_Flash_OperationStatus
-                0x10002648       0x40 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+                0x10002670       0x40 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
  .text.Cy_IPC_Drv_LockRelease
-                0x10002688       0x2c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
-                0x10002688                Cy_IPC_Drv_LockRelease
+                0x100026b0       0x2c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+                0x100026b0                Cy_IPC_Drv_LockRelease
  .text.Cy_IPC_Drv_SendMsgWord
-                0x100026b4       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
-                0x100026b4                Cy_IPC_Drv_SendMsgWord
+                0x100026dc       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+                0x100026dc                Cy_IPC_Drv_SendMsgWord
  .text.Cy_IPC_Drv_ReadMsgWord
-                0x100026d4       0x2c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
-                0x100026d4                Cy_IPC_Drv_ReadMsgWord
+                0x100026fc       0x2c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+                0x100026fc                Cy_IPC_Drv_ReadMsgWord
  .text.__NVIC_EnableIRQ
-                0x10002700       0x1c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x10002728       0x1c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
  .text.Cy_IPC_Drv_GetIpcBaseAddress
-                0x1000271c       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x10002744       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
  .text.Cy_IPC_Pipe_Config
-                0x10002740       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
-                0x10002740                Cy_IPC_Pipe_Config
+                0x10002768       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x10002768                Cy_IPC_Pipe_Config
  .text.Cy_IPC_Pipe_EndpointInit
-                0x10002754       0x88 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
-                0x10002754                Cy_IPC_Pipe_EndpointInit
+                0x1000277c       0x88 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x1000277c                Cy_IPC_Pipe_EndpointInit
  .text.Cy_IPC_Pipe_Init
-                0x100027dc       0x9e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
-                0x100027dc                Cy_IPC_Pipe_Init
- *fill*         0x1000287a        0x2 
+                0x10002804       0x9e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x10002804                Cy_IPC_Pipe_Init
+ *fill*         0x100028a2        0x2 
  .text.Cy_IPC_Pipe_SendMessage
-                0x1000287c       0xa4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
-                0x1000287c                Cy_IPC_Pipe_SendMessage
+                0x100028a4       0xa4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x100028a4                Cy_IPC_Pipe_SendMessage
  .text.Cy_IPC_Pipe_ExecCallback
-                0x10002920       0xa4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
-                0x10002920                Cy_IPC_Pipe_ExecCallback
+                0x10002948       0xa4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x10002948                Cy_IPC_Pipe_ExecCallback
  .text.Cy_IPC_Pipe_ExecuteCallback
-                0x100029c4       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
-                0x100029c4                Cy_IPC_Pipe_ExecuteCallback
+                0x100029ec       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x100029ec                Cy_IPC_Pipe_ExecuteCallback
  .text.Cy_IPC_Drv_GetIpcBaseAddress
-                0x100029e4       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x10002a0c       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
  .text.Cy_IPC_Sema_InitExt
-                0x10002a08       0x7c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
-                0x10002a08                Cy_IPC_Sema_InitExt
+                0x10002a30       0x7c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x10002a30                Cy_IPC_Sema_InitExt
  .text.Cy_IPC_Sema_Init
-                0x10002a84       0x38 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
-                0x10002a84                Cy_IPC_Sema_Init
+                0x10002aac       0x38 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x10002aac                Cy_IPC_Sema_Init
  .text.Cy_IPC_Sema_Clear
-                0x10002abc       0x84 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
-                0x10002abc                Cy_IPC_Sema_Clear
+                0x10002ae4       0x84 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x10002ae4                Cy_IPC_Sema_Clear
  .text.Cy_IPC_Sema_Status
-                0x10002b40       0x48 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
-                0x10002b40                Cy_IPC_Sema_Status
+                0x10002b68       0x48 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x10002b68                Cy_IPC_Sema_Status
  .text.Cy_SysClk_ClkSlowGetDivider
-                0x10002b88       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002b88                Cy_SysClk_ClkSlowGetDivider
+                0x10002bb0       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002bb0                Cy_SysClk_ClkSlowGetDivider
  .text.Cy_SysClk_ClkPeriGetDivider
-                0x10002ba0       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002ba0                Cy_SysClk_ClkPeriGetDivider
+                0x10002bc8       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002bc8                Cy_SysClk_ClkPeriGetDivider
  .text.Cy_SysClk_ClkFastGetDivider
-                0x10002bb4       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002bb4                Cy_SysClk_ClkFastGetDivider
+                0x10002bdc       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002bdc                Cy_SysClk_ClkFastGetDivider
  .text.Cy_SysClk_ClkHfGetSource
-                0x10002bcc       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002bcc                Cy_SysClk_ClkHfGetSource
+                0x10002bf4       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002bf4                Cy_SysClk_ClkHfGetSource
  .text.Cy_SysClk_ClkHfGetDivider
-                0x10002bf0       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002bf0                Cy_SysClk_ClkHfGetDivider
+                0x10002c18       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c18                Cy_SysClk_ClkHfGetDivider
  .text.Cy_SysClk_WcoOkay
-                0x10002c14       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c14                Cy_SysClk_WcoOkay
+                0x10002c3c       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c3c                Cy_SysClk_WcoOkay
  .text.Cy_SysClk_AltHfGetFrequency
-                0x10002c28        0x4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c28                Cy_SysClk_AltHfGetFrequency
+                0x10002c50        0x4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c50                Cy_SysClk_AltHfGetFrequency
  .text.Cy_SysClk_AltLfGetFrequency
-                0x10002c2c        0x4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c2c                Cy_SysClk_AltLfGetFrequency
+                0x10002c54        0x4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c54                Cy_SysClk_AltLfGetFrequency
  .text.Cy_SysClk_ExtClkGetFrequency
-                0x10002c30        0xc /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c30                Cy_SysClk_ExtClkGetFrequency
+                0x10002c58        0xc /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c58                Cy_SysClk_ExtClkGetFrequency
  .text.Cy_SysClk_EcoGetStatus
-                0x10002c3c       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c3c                Cy_SysClk_EcoGetStatus
+                0x10002c64       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c64                Cy_SysClk_EcoGetStatus
  .text.Cy_SysClk_EcoGetFrequency
-                0x10002c60       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c60                Cy_SysClk_EcoGetFrequency
+                0x10002c88       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002c88                Cy_SysClk_EcoGetFrequency
  .text.Cy_SysClk_ClkPathGetSource
-                0x10002c78       0x3c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002c78                Cy_SysClk_ClkPathGetSource
+                0x10002ca0       0x3c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002ca0                Cy_SysClk_ClkPathGetSource
  .text.Cy_SysClk_ClkPathMuxGetFrequency
-                0x10002cb4       0xb0 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002cb4                Cy_SysClk_ClkPathMuxGetFrequency
+                0x10002cdc       0xb0 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002cdc                Cy_SysClk_ClkPathMuxGetFrequency
  .text.Cy_SysClk_FllIsEnabled
-                0x10002d64       0x10 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002d64                Cy_SysClk_FllIsEnabled
+                0x10002d8c       0x10 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002d8c                Cy_SysClk_FllIsEnabled
  .text.Cy_SysClk_FllGetConfiguration
-                0x10002d74       0x5c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002d74                Cy_SysClk_FllGetConfiguration
+                0x10002d9c       0x5c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002d9c                Cy_SysClk_FllGetConfiguration
  .text.Cy_SysClk_PllIsEnabled
-                0x10002dd0       0x28 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002dd0                Cy_SysClk_PllIsEnabled
+                0x10002df8       0x28 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002df8                Cy_SysClk_PllIsEnabled
  .text.Cy_SysClk_PllGetConfiguration
-                0x10002df8       0x4c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002df8                Cy_SysClk_PllGetConfiguration
+                0x10002e20       0x4c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002e20                Cy_SysClk_PllGetConfiguration
  .text.Cy_SysClk_FllGetFrequency
-                0x10002e44       0x5c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002e44                Cy_SysClk_FllGetFrequency
+                0x10002e6c       0x5c /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002e6c                Cy_SysClk_FllGetFrequency
  .text.Cy_SysClk_PllGetFrequency
-                0x10002ea0       0xa8 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002ea0                Cy_SysClk_PllGetFrequency
+                0x10002ec8       0xa8 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002ec8                Cy_SysClk_PllGetFrequency
  .text.Cy_SysClk_ClkPathGetFrequency
-                0x10002f48       0x40 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002f48                Cy_SysClk_ClkPathGetFrequency
+                0x10002f70       0x40 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002f70                Cy_SysClk_ClkPathGetFrequency
  .text.Cy_SysClk_ClkHfGetFrequency
-                0x10002f88       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002f88                Cy_SysClk_ClkHfGetFrequency
+                0x10002fb0       0x20 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002fb0                Cy_SysClk_ClkHfGetFrequency
  .text.Cy_SysClk_ClkPeriGetFrequency
-                0x10002fa8       0x1a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002fa8                Cy_SysClk_ClkPeriGetFrequency
+                0x10002fd0       0x1a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002fd0                Cy_SysClk_ClkPeriGetFrequency
  .text.Cy_SysClk_ClkSlowGetFrequency
-                0x10002fc2       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
-                0x10002fc2                Cy_SysClk_ClkSlowGetFrequency
- *fill*         0x10002fda        0x2 
+                0x10002fea       0x18 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x10002fea                Cy_SysClk_ClkSlowGetFrequency
+ *fill*         0x10003002        0x2 
  .text.__NVIC_SetPriority
-                0x10002fdc       0x28 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+                0x10003004       0x28 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
  .text.Cy_SysInt_SetVector
-                0x10003004       0x38 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
-                0x10003004                Cy_SysInt_SetVector
+                0x1000302c       0x38 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+                0x1000302c                Cy_SysInt_SetVector
  .text.Cy_SysInt_Init
-                0x1000303c       0x48 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
-                0x1000303c                Cy_SysInt_Init
+                0x10003064       0x48 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+                0x10003064                Cy_SysInt_Init
  .text.Cy_SysLib_ProcessingFault
-                0x10003084        0x2 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
-                0x10003084                Cy_SysLib_ProcessingFault
- *fill*         0x10003086        0x2 
+                0x100030ac        0x2 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+                0x100030ac                Cy_SysLib_ProcessingFault
+ *fill*         0x100030ae        0x2 
  .text.Cy_SysLib_FaultHandler
-                0x10003088       0x98 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
-                0x10003088                Cy_SysLib_FaultHandler
- .text          0x10003120       0x30 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_aeabi_uldivmod.o)
-                0x10003120                __aeabi_uldivmod
+                0x100030b0       0x98 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+                0x100030b0                Cy_SysLib_FaultHandler
+ .text          0x10003148       0x30 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_aeabi_uldivmod.o)
+                0x10003148                __aeabi_uldivmod
  .text.__udivmoddi4
-                0x10003150      0x2f8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_udivmoddi4.o)
-                0x10003150                __udivmoddi4
- .text          0x10003448        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_dvmd_tls.o)
-                0x10003448                __aeabi_ldiv0
-                0x10003448                __aeabi_idiv0
+                0x10003178      0x2f8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_udivmoddi4.o)
+                0x10003178                __udivmoddi4
+ .text          0x10003470        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_dvmd_tls.o)
+                0x10003470                __aeabi_ldiv0
+                0x10003470                __aeabi_idiv0
  .text.__libc_init_array
-                0x1000344c       0x48 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libg_nano.a(libc_a-init.o)
-                0x1000344c                __libc_init_array
+                0x10003474       0x48 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libg_nano.a(libc_a-init.o)
+                0x10003474                __libc_init_array
  .text.__libc_fini_array
-                0x10003494       0x28 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libg_nano.a(libc_a-fini.o)
-                0x10003494                __libc_fini_array
+                0x100034bc       0x28 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libg_nano.a(libc_a-fini.o)
+                0x100034bc                __libc_fini_array
  *(.init)
- .init          0x100034bc        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crti.o
-                0x100034bc                _init
- .init          0x100034c0        0x8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtn.o
+ .init          0x100034e4        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crti.o
+                0x100034e4                _init
+ .init          0x100034e8        0x8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtn.o
  *(.fini)
- .fini          0x100034c8        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crti.o
-                0x100034c8                _fini
- .fini          0x100034cc        0x8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtn.o
+ .fini          0x100034f0        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crti.o
+                0x100034f0                _fini
+ .fini          0x100034f4        0x8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -10169,60 +10170,60 @@ END GROUP
  *(.dtors)
  *(.rodata .rodata.* .constdata .constdata.* .conststring .conststring.*)
  .rodata.systemIpcPipeConfigCm4.1
-                0x100034d4       0x34 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
+                0x100034fc       0x34 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
  .rodata.cy_deviceIpBlockCfgPSoC6_02
-                0x10003508       0xc4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
-                0x10003508                cy_deviceIpBlockCfgPSoC6_02
+                0x10003530       0xc4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+                0x10003530                cy_deviceIpBlockCfgPSoC6_02
  *(.eh_frame*)
- .eh_frame      0x100035cc        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
- .eh_frame      0x100035cc        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtend.o
+ .eh_frame      0x100035f4        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
+ .eh_frame      0x100035f4        0x4 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtend.o
 
-.glue_7         0x100035d0        0x0
- .glue_7        0x100035d0        0x0 linker stubs
+.glue_7         0x100035f8        0x0
+ .glue_7        0x100035f8        0x0 linker stubs
 
-.glue_7t        0x100035d0        0x0
- .glue_7t       0x100035d0        0x0 linker stubs
+.glue_7t        0x100035f8        0x0
+ .glue_7t       0x100035f8        0x0 linker stubs
 
-.vfp11_veneer   0x100035d0        0x0
- .vfp11_veneer  0x100035d0        0x0 linker stubs
+.vfp11_veneer   0x100035f8        0x0
+ .vfp11_veneer  0x100035f8        0x0 linker stubs
 
-.v4_bx          0x100035d0        0x0
- .v4_bx         0x100035d0        0x0 linker stubs
+.v4_bx          0x100035f8        0x0
+ .v4_bx         0x100035f8        0x0 linker stubs
 
-.iplt           0x100035d0        0x0
- .iplt          0x100035d0        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
+.iplt           0x100035f8        0x0
+ .iplt          0x100035f8        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x100035d0                        __exidx_start = .
+                0x100035f8                        __exidx_start = .
 
-.ARM.exidx      0x100035d0        0x8
+.ARM.exidx      0x100035f8        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx.text.__udivmoddi4
-                0x100035d0        0x8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_udivmoddi4.o)
-                0x100035d8                        __exidx_end = .
+                0x100035f8        0x8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_udivmoddi4.o)
+                0x10003600                        __exidx_end = .
 
-.rel.dyn        0x100035d8        0x0
- .rel.iplt      0x100035d8        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
+.rel.dyn        0x10003600        0x0
+ .rel.iplt      0x10003600        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
 
-.copy.table     0x100035d8       0x18
-                0x100035d8                        . = ALIGN (0x4)
-                0x100035d8                        __copy_table_start__ = .
-                0x100035d8        0x4 LONG 0x10002000 __Vectors
-                0x100035dc        0x4 LONG 0x8002000 __ram_vectors_start__
-                0x100035e0        0x4 LONG 0x2e0 (__Vectors_End - __Vectors)
-                0x100035e4        0x4 LONG 0x100035f8 __etext
-                0x100035e8        0x4 LONG 0x80022e0 __data_start__
-                0x100035ec        0x4 LONG 0x390 (__data_end__ - __data_start__)
-                0x100035f0                        __copy_table_end__ = .
+.copy.table     0x10003600       0x18
+                0x10003600                        . = ALIGN (0x4)
+                0x10003600                        __copy_table_start__ = .
+                0x10003600        0x4 LONG 0x10002000 __Vectors
+                0x10003604        0x4 LONG 0x8002000 __ram_vectors_start__
+                0x10003608        0x4 LONG 0x2e0 (__Vectors_End - __Vectors)
+                0x1000360c        0x4 LONG 0x10003620 __etext
+                0x10003610        0x4 LONG 0x80022e0 __data_start__
+                0x10003614        0x4 LONG 0x390 (__data_end__ - __data_start__)
+                0x10003618                        __copy_table_end__ = .
 
-.zero.table     0x100035f0        0x8
-                0x100035f0                        . = ALIGN (0x4)
-                0x100035f0                        __zero_table_start__ = .
-                0x100035f0        0x4 LONG 0x800275c __bss_start__
-                0x100035f4        0x4 LONG 0x1d8 (__bss_end__ - __bss_start__)
-                0x100035f8                        __zero_table_end__ = .
-                0x100035f8                        __etext = .
+.zero.table     0x10003618        0x8
+                0x10003618                        . = ALIGN (0x4)
+                0x10003618                        __zero_table_start__ = .
+                0x10003618        0x4 LONG 0x800275c __bss_start__
+                0x1000361c        0x4 LONG 0x1d8 (__bss_end__ - __bss_start__)
+                0x10003620                        __zero_table_end__ = .
+                0x10003620                        __etext = .
 
 .ramVectors     0x08002000      0x2e0
                 0x08002000                        __ram_vectors_start__ = .
@@ -10231,7 +10232,7 @@ END GROUP
                 0x08002000                __ramVectors
                 0x080022e0                        __ram_vectors_end__ = .
 
-.data           0x080022e0      0x390 load address 0x100035f8
+.data           0x080022e0      0x390 load address 0x10003620
                 0x080022e0                        . = ALIGN (0x4)
                 0x080022e0                        __data_start__ = .
  *(vtable)
@@ -10283,19 +10284,19 @@ END GROUP
                 0x08002670                        __data_end__ = .
 
 .tm_clone_table
-                0x08002670        0x0 load address 0x10003988
+                0x08002670        0x0 load address 0x100039b0
  .tm_clone_table
                 0x08002670        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
  .tm_clone_table
                 0x08002670        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtend.o
 
-.igot.plt       0x08002670        0x0 load address 0x10003988
+.igot.plt       0x08002670        0x0 load address 0x100039b0
  .igot.plt      0x08002670        0x0 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/crtbegin.o
 
-.cy_sharedmem   0x08002670        0x8 load address 0x10003988
+.cy_sharedmem   0x08002670        0x8 load address 0x100039b0
  .cy_sharedmem  0x08002670        0x8 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
 
-.noinit         0x08002678       0xe1 load address 0x10003990
+.noinit         0x08002678       0xe1 load address 0x100039b8
  *(.noinit)
  .noinit        0x08002678       0x48 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
  .noinit        0x080026c0        0x4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
@@ -10304,7 +10305,7 @@ END GROUP
                 0x0800273c                cy_assertLine
                 0x08002740                cy_assertFileName
 
-.bss            0x0800275c      0x1d8 load address 0x10003990
+.bss            0x0800275c      0x1d8 load address 0x100039b8
                 0x0800275c                        . = ALIGN (0x4)
                 0x0800275c                        __bss_start__ = .
  *(.bss*)
@@ -10346,7 +10347,7 @@ END GROUP
  *fill*         0x08002931        0x3 
                 0x08002934                        __bss_end__ = .
 
-.heap           0x08002938    0xfbec8 load address 0x10003990
+.heap           0x08002938    0xfbec8 load address 0x100039b8
                 0x08002938                        __HeapBase = .
                 0x08002938                        __end__ = .
                 0x08002938                        end = __end__
@@ -10356,7 +10357,7 @@ END GROUP
  *fill*         0x08002d38    0xfbac8 
                 0x080fe800                        __HeapLimit = .
 
-.stack_dummy    0x080fe800     0x1000 load address 0x10003990
+.stack_dummy    0x080fe800     0x1000 load address 0x100039b8
  *(.stack*)
  .stack         0x080fe800     0x1000 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/TOOLCHAIN_GCC_ARM/startup_psoc6_02_cm4.o
                 0x080ff800                        __StackTop = (ORIGIN (ram) + LENGTH (ram))
@@ -10483,23 +10484,23 @@ LOAD linker stubs
  .comment       0x00000045       0x46 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
  .comment       0x00000045       0x46 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
-.debug_line     0x00000000     0xbe4b
+.debug_line     0x00000000     0xbf2b
  .debug_line    0x00000000       0x93 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/TOOLCHAIN_GCC_ARM/startup_psoc6_02_cm4.o
  .debug_line    0x00000093      0x4c5 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
- .debug_line    0x00000558       0x99 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
- .debug_line    0x000005f1       0x5a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
- .debug_line    0x0000064b      0x136 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
- .debug_line    0x00000781     0x1319 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
- .debug_line    0x00001a9a     0x1e83 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
- .debug_line    0x0000391d      0x1a1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
- .debug_line    0x00003abe     0x1274 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
- .debug_line    0x00004d32      0x4fd /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
- .debug_line    0x0000522f      0xae1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
- .debug_line    0x00005d10      0x6c2 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
- .debug_line    0x000063d2     0x2bf1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
- .debug_line    0x00008fc3      0x40e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
- .debug_line    0x000093d1      0x89b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
- .debug_line    0x00009c6c     0x21df /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
+ .debug_line    0x00000558      0x179 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
+ .debug_line    0x000006d1       0x5a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
+ .debug_line    0x0000072b      0x136 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
+ .debug_line    0x00000861     0x1319 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
+ .debug_line    0x00001b7a     0x1e83 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
+ .debug_line    0x000039fd      0x1a1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+ .debug_line    0x00003b9e     0x1274 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+ .debug_line    0x00004e12      0x4fd /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+ .debug_line    0x0000530f      0xae1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+ .debug_line    0x00005df0      0x6c2 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+ .debug_line    0x000064b2     0x2bf1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+ .debug_line    0x000090a3      0x40e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+ .debug_line    0x000094b1      0x89b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+ .debug_line    0x00009d4c     0x21df /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
 .debug_line_str
                 0x00000000      0x1d0
@@ -10513,41 +10514,41 @@ LOAD linker stubs
  .debug_line_str
                 0x000001d0       0xc8 /opt/Tools/mtb-gcc-arm-eabi/14.2.1/gcc/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/softfp/libgcc.a(_dvmd_tls.o)
 
-.debug_info     0x00000000    0x20cb0
+.debug_info     0x00000000    0x20d24
  .debug_info    0x00000000      0x8bb /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/TOOLCHAIN_GCC_ARM/startup_psoc6_02_cm4.o
  .debug_info    0x000008bb     0x130d /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
- .debug_info    0x00001bc8       0x6c /home/pranav/mtw/Hello_World/build/Debug/local/main.o
- .debug_info    0x00001c34       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
- .debug_info    0x00001c58       0xaa /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
- .debug_info    0x00001d02     0x5ef6 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
- .debug_info    0x00007bf8     0x76d1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
- .debug_info    0x0000f2c9      0x61e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
- .debug_info    0x0000f8e7     0x303a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
- .debug_info    0x00012921      0xbbe /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
- .debug_info    0x000134df     0x1a1a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
- .debug_info    0x00014ef9      0xddf /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
- .debug_info    0x00015cd8     0x3c7b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
- .debug_info    0x00019953      0xf32 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
- .debug_info    0x0001a885     0x27de /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
- .debug_info    0x0001d063     0x3c4d /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
+ .debug_info    0x00001bc8       0xe0 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
+ .debug_info    0x00001ca8       0x24 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
+ .debug_info    0x00001ccc       0xaa /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
+ .debug_info    0x00001d76     0x5ef6 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
+ .debug_info    0x00007c6c     0x76d1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
+ .debug_info    0x0000f33d      0x61e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+ .debug_info    0x0000f95b     0x303a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+ .debug_info    0x00012995      0xbbe /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+ .debug_info    0x00013553     0x1a1a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+ .debug_info    0x00014f6d      0xddf /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+ .debug_info    0x00015d4c     0x3c7b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+ .debug_info    0x000199c7      0xf32 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+ .debug_info    0x0001a8f9     0x27de /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+ .debug_info    0x0001d0d7     0x3c4d /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
-.debug_abbrev   0x00000000     0x2977
+.debug_abbrev   0x00000000     0x2997
  .debug_abbrev  0x00000000       0x26 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/TOOLCHAIN_GCC_ARM/startup_psoc6_02_cm4.o
  .debug_abbrev  0x00000026      0x2cc /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
- .debug_abbrev  0x000002f2       0x68 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
- .debug_abbrev  0x0000035a       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
- .debug_abbrev  0x0000036e       0x61 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
- .debug_abbrev  0x000003cf      0x570 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
- .debug_abbrev  0x0000093f      0x56f /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
- .debug_abbrev  0x00000eae       0xed /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
- .debug_abbrev  0x00000f9b      0x3bb /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
- .debug_abbrev  0x00001356      0x246 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
- .debug_abbrev  0x0000159c      0x3b5 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
- .debug_abbrev  0x00001951      0x2b9 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
- .debug_abbrev  0x00001c0a      0x390 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
- .debug_abbrev  0x00001f9a      0x287 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
- .debug_abbrev  0x00002221      0x382 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
- .debug_abbrev  0x000025a3      0x3d4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
+ .debug_abbrev  0x000002f2       0x88 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
+ .debug_abbrev  0x0000037a       0x14 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
+ .debug_abbrev  0x0000038e       0x61 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
+ .debug_abbrev  0x000003ef      0x570 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
+ .debug_abbrev  0x0000095f      0x56f /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
+ .debug_abbrev  0x00000ece       0xed /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+ .debug_abbrev  0x00000fbb      0x3bb /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+ .debug_abbrev  0x00001376      0x246 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+ .debug_abbrev  0x000015bc      0x3b5 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+ .debug_abbrev  0x00001971      0x2b9 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+ .debug_abbrev  0x00001c2a      0x390 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+ .debug_abbrev  0x00001fba      0x287 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+ .debug_abbrev  0x00002241      0x382 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+ .debug_abbrev  0x000025c3      0x3d4 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
 .debug_aranges  0x00000000      0xb88
  .debug_aranges
@@ -10583,78 +10584,80 @@ LOAD linker stubs
  .debug_aranges
                 0x00000938      0x250 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
-.debug_str      0x00000000    0x173f1
- .debug_str     0x00000000    0x173f1 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/TOOLCHAIN_GCC_ARM/startup_psoc6_02_cm4.o
+.debug_str      0x00000000    0x17405
+ .debug_str     0x00000000    0x17405 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/TOOLCHAIN_GCC_ARM/startup_psoc6_02_cm4.o
                                0x176c (size before relaxing)
- .debug_str     0x000173f1     0x2123 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
- .debug_str     0x000173f1       0xfe /home/pranav/mtw/Hello_World/build/Debug/local/main.o
- .debug_str     0x000173f1       0x96 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
- .debug_str     0x000173f1      0x1d5 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
- .debug_str     0x000173f1     0xf4a3 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
- .debug_str     0x000173f1     0xe5ac /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
- .debug_str     0x000173f1      0x900 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
- .debug_str     0x000173f1     0x358b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
- .debug_str     0x000173f1      0xa3b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
- .debug_str     0x000173f1     0x2444 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
- .debug_str     0x000173f1      0xc15 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
- .debug_str     0x000173f1     0x33fa /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
- .debug_str     0x000173f1     0x1d13 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
- .debug_str     0x000173f1     0x1e26 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
- .debug_str     0x000173f1     0x2ec9 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
+ .debug_str     0x00017405     0x2123 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
+ .debug_str     0x00017405      0x196 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
+ .debug_str     0x00017405       0x96 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/TOOLCHAIN_GCC_ARM/cy_syslib_ext.o
+ .debug_str     0x00017405      0x1d5 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/cat1cm0p/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.o
+ .debug_str     0x00017405     0xf4a3 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
+ .debug_str     0x00017405     0xe5ac /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
+ .debug_str     0x00017405      0x900 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+ .debug_str     0x00017405     0x358b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+ .debug_str     0x00017405      0xa3b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+ .debug_str     0x00017405     0x2444 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+ .debug_str     0x00017405      0xc15 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+ .debug_str     0x00017405     0x33fa /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+ .debug_str     0x00017405     0x1d13 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+ .debug_str     0x00017405     0x1e26 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+ .debug_str     0x00017405     0x2ec9 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
 .debug_loclists
-                0x00000000     0x782c
+                0x00000000     0x786f
  .debug_loclists
                 0x00000000       0x48 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
  .debug_loclists
-                0x00000048      0xd4e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
+                0x00000048       0x43 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
  .debug_loclists
-                0x00000d96     0x151e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
+                0x0000008b      0xd4e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
  .debug_loclists
-                0x000022b4      0xc1b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+                0x00000dd9     0x151e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
  .debug_loclists
-                0x00002ecf      0x372 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+                0x000022f7      0xc1b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
  .debug_loclists
-                0x00003241      0x592 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x00002f12      0x372 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
  .debug_loclists
-                0x000037d3      0x687 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x00003284      0x592 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
  .debug_loclists
-                0x00003e5a     0x24be /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x00003816      0x687 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
  .debug_loclists
-                0x00006318      0x1bb /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+                0x00003e9d     0x24be /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
  .debug_loclists
-                0x000064d3      0x26e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+                0x0000635b      0x1bb /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
  .debug_loclists
-                0x00006741     0x10eb /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
+                0x00006516      0x26e /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+ .debug_loclists
+                0x00006784     0x10eb /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
 .debug_rnglists
-                0x00000000      0xbb2
+                0x00000000      0xbca
  .debug_rnglists
                 0x00000000       0x2b /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
  .debug_rnglists
-                0x0000002b       0x13 /home/pranav/mtw/Hello_World/build/Debug/local/main.o
+                0x0000002b       0x2b /home/pranav/mtw/Hello_World/build/Debug/local/main.o
  .debug_rnglists
-                0x0000003e      0x1e1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
+                0x00000056      0x1e1 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_gpio.o
  .debug_rnglists
-                0x0000021f      0x191 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
+                0x00000237      0x191 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-hal-cat1/source/cyhal_pdmpcm.o
  .debug_rnglists
-                0x000003b0       0x13 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
+                0x000003c8       0x13 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/devices/COMPONENT_CAT1A/source/cy_device.o
  .debug_rnglists
-                0x000003c3      0x10a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
+                0x000003db      0x10a /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_flash.o
  .debug_rnglists
-                0x000004cd       0x2b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
+                0x000004e5       0x2b /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_drv.o
  .debug_rnglists
-                0x000004f8       0x5f /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
+                0x00000510       0x5f /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_pipe.o
  .debug_rnglists
-                0x00000557       0x39 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
+                0x0000056f       0x39 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_ipc_sema.o
  .debug_rnglists
-                0x00000590      0x347 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
+                0x000005a8      0x347 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysclk.o
  .debug_rnglists
-                0x000008d7       0x37 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
+                0x000008ef       0x37 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_sysint.o
  .debug_rnglists
-                0x0000090e       0x6f /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
+                0x00000926       0x6f /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syslib.o
  .debug_rnglists
-                0x0000097d      0x235 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
+                0x00000995      0x235 /home/pranav/mtw/Hello_World/build/Debug/libraries_shared/mtb-pdl-cat1/drivers/source/cy_syspm.o
 
 .debug_frame    0x00000000     0x1d04
  .debug_frame   0x00000000       0x78 /home/pranav/mtw/Hello_World/build/Debug/bsps/APP_CY8CKIT-062S2-43012/COMPONENT_CM4/system_psoc6_cm4.o
