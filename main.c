@@ -1,68 +1,95 @@
 #include <stdint.h>
+#include <stdio.h>
+#include "cyi2c.h"
 
-/* Register Addresses */
-#define HSIOM_PRT0_PORT_SEL1   (*(volatile unsigned long *)(0x40300004))
+/* LSM303AGR I2C slave addresses */
+#define LSM303_ACC_ADDR   0x19
+#define LSM303_MAG_ADDR   0x1E
 
-#define GPIO_PRT0_OUT          (*(volatile unsigned long *)(0x40310000))
-#define GPIO_PRT0_OUT_CLR      (*(volatile unsigned long *)(0x40310004))
-#define GPIO_PRT0_OUT_SET      (*(volatile unsigned long *)(0x40310008))
-#define GPIO_PRT0_OUT_INV      (*(volatile unsigned long *)(0x4031000C))
-#define GPIO_PRT0_CFG          (*(volatile unsigned long *)(0x40310044))
+/* Accelerometer registers */
+#define CTRL_REG1_A       0x20
+#define CTRL_REG4_A       0x23
+#define OUT_X_L_A         0x28  /* needs auto-increment */
 
-#define GPIO_PRT0_IN (*(volatile unsigned long *) (0x40310010))
+/* Magnetometer registers */
+#define CFG_REG_A_M       0x60
+#define CFG_REG_C_M       0x62
+#define OUTX_L_REG_M      0x68  /* needs auto-increment */
 
-/* GREEN LED on P0[5] — Active Low */
-#define LED_PIN         5u
-#define LED_MASK        (1u << LED_PIN)
+/* Init accelerometer */
+static int LSM303_Init_Accel(void)
+{
+    int ret;
+    ret = I2C_WriteByte(LSM303_ACC_ADDR, CTRL_REG1_A, 0x57); /* 100Hz, normal, XYZ enable */
+    if (ret) return ret;
 
-/* HSIOM: IO5_SEL bits [12:8] in PORT_SEL1 */
-#define LED_HSIOM_SHIFT (8u)
-#define LED_HSIOM_MASK  (0x1Fu << LED_HSIOM_SHIFT)
+    ret = I2C_WriteByte(LSM303_ACC_ADDR, CTRL_REG4_A, 0x00); /* ±2G full scale */
+    return ret;
+}
 
-/* HSIOM: IO5_SEL bits [4:0] in PORT_SEL1 */
-#define SW_HSIOM_MASK  (0x01Fu)
+/* Init magnetometer */
+static int LSM303_Init_Mag(void)
+{
+    int ret;
+    ret = I2C_WriteByte(LSM303_MAG_ADDR, CFG_REG_A_M, 0x00); /* Continuous mode */
+    if (ret) return ret;
 
-/* Drive Mode for P0[5]: DRIVE_MODE5 bits [22:20] */
-#define LED_CFG_SHIFT   (20u)
-#define LED_CFG_MASK    (0x7u << LED_CFG_SHIFT)
+    ret = I2C_WriteByte(LSM303_MAG_ADDR, CFG_REG_C_M, 0x00); /* Defaults OK */
+    return ret;
+}
 
-/* IN_EN4 and Drive Mode for P0[4]: IN_EN4[19] DRIVE_MODE5 bits [18:16] */
-#define SW_CFG_SHIFT   (16u)
-#define SW_CFG_MASK    (0xFu << SW_CFG_SHIFT)
+/* Read accelerometer XYZ (mg units) */
+static int LSM303_Read_Accel(int16_t *x, int16_t *y, int16_t *z)
+{
+    uint8_t raw[6];
+    int ret = I2C_ReadMulti(LSM303_ACC_ADDR, OUT_X_L_A | 0x80, raw, 6); /* auto-increment */
+    if (ret) return ret;
 
-#define SW_PIN_MASK   (1u << 4)
+    *x = (int16_t)((raw[1] << 8) | raw[0]);
+    *y = (int16_t)((raw[3] << 8) | raw[2]);
+    *z = (int16_t)((raw[5] << 8) | raw[4]);
+    return 0;
+}
 
+/* Read magnetometer XYZ */
+static int LSM303_Read_Mag(int16_t *x, int16_t *y, int16_t *z)
+{
+    uint8_t raw[6];
+    int ret = I2C_ReadMulti(LSM303_MAG_ADDR, OUTX_L_REG_M | 0x80, raw, 6);
+    if (ret) return ret;
 
+    *x = (int16_t)((raw[1] << 8) | raw[0]);
+    *y = (int16_t)((raw[3] << 8) | raw[2]);
+    *z = (int16_t)((raw[5] << 8) | raw[4]);
+    return 0;
+}
+
+/* ---------------- MAIN ---------------- */
 int main(void)
 {
-    /* 1) Route P0[5] and P0[4] to GPIO */
-    HSIOM_PRT0_PORT_SEL1 &= ~(LED_HSIOM_MASK | SW_HSIOM_MASK);
+    int ret;
+    int16_t ax, ay, az;
+    int16_t mx, my, mz;
 
-    /* 2) Configure P0[5] drive mode = STRONG */
-    GPIO_PRT0_CFG &= ~(LED_CFG_MASK | SW_CFG_MASK);
-    GPIO_PRT0_CFG |=  (0x6u << LED_CFG_SHIFT);
+    /* Init SCB0 I2C */
+    I2C_Init(100000); /* 100kHz */
 
-    /* 3) Configure P0[4] IN_EN4 = 1, drive mode = HIGHZ */
-    GPIO_PRT0_CFG |=  (0x8u << SW_CFG_SHIFT);
+    /* LSM303AGR init */
+    ret = LSM303_Init_Accel();
+    if (ret) while(1); /* error: hang or debug print */
 
-    /* 4) Turn LED OFF (because LED is active-low) */
-    GPIO_PRT0_OUT_SET = LED_MASK;
+    ret = LSM303_Init_Mag();
+    if (ret) while(1);
 
-    /* Switch input mask (P0.4) */
-    uint8_t prevSwState = 0;
-
-    while(1)
+    while (1)
     {
-    	uint8_t swState = (GPIO_PRT0_IN & SW_PIN_MASK);
+        LSM303_Read_Accel(&ax, &ay, &az);
+        LSM303_Read_Mag(&mx, &my, &mz);
 
-    	if((prevSwState != 0) && (swState == 0)){
-        /* 4) Toggle LED */
-        GPIO_PRT0_OUT_INV = LED_MASK;
-    	}
+        /* Replace with UART / SWO / printf according to your environment */
+        printf("ACC: %d %d %d   MAG: %d %d %d\n", ax, ay, az, mx, my, mz);
 
-    	prevSwState = swState;
-
-        /* Delay */
-        for(volatile unsigned long i = 0; i < 3000; i++);
+        /* Small delay */
+        for (volatile int i = 0; i < 100000; i++);
     }
 }
