@@ -35,7 +35,28 @@
 #include "ImageData.h"
 #include <stdlib.h> // malloc() free()
 
-int EPD_1in9_test(void);
 
+typedef enum {
+    DEGREE_CELSIUS,
+    DEGREE_FAHRENHEIT
+} tmp_unit;
+
+typedef enum {
+    PERCENT,
+    G_PER_CUBIC_METER
+} hm_unit;
+
+
+typedef struct _sensor_reading{
+	float temp;
+	float humidity;
+	tmp_unit temp_unit;
+	hm_unit hum_unit;
+}sensor_reading;
+
+int EPD_1in9_test(void);
+void epaperStartup();
+void displaySensorData(sensor_reading* data);
+int extract_digits(float n, int d[]);
 
 #endif
