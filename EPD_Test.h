@@ -57,6 +57,7 @@ typedef struct _sensor_reading{
 int EPD_1in9_test(void);
 void epaperStartup();
 void displaySensorData(sensor_reading* data);
-int extract_digits(float n, int d[]);
+int extract_hum_digits(float n, int d[]);
+int extract_temp_digits(float n, int d[]);
 
 #endif

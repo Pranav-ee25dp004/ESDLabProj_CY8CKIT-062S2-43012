@@ -47,6 +47,15 @@ extern const unsigned char DSPNUM_1in9_W7[];
 extern const unsigned char DSPNUM_1in9_W8[];
 extern const unsigned char DSPNUM_1in9_W9[];
 
+extern const unsigned char DSPNUM_1in9_WAc[];
+extern const unsigned char DSPNUM_1in9_WBc[];
+extern const unsigned char DSPNUM_1in9_WCc[];
+extern const unsigned char DSPNUM_1in9_WDc[];
+extern const unsigned char DSPNUM_1in9_WEc[];
+extern const unsigned char DSPNUM_1in9_WFc[];
+extern const unsigned char DSPNUM_1in9_WGc[];
+extern const unsigned char DSPNUM_1in9_WHc[];
+
 
 #endif
 /* FILE END */

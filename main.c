@@ -79,7 +79,7 @@ int main(void)
 		CY_ASSERT(0);
 	}
 
-	epaperStartup();
+	//epaperStartup();
 
 	//printf("Running ePaper test sequence...\r\n");
 
@@ -88,14 +88,18 @@ int main(void)
 	//EPD_1in9_();
 
 	sensor_reading myData;
-	myData.humidity = 56.7;
-	myData.temp = 153.9;
+	//myData.humidity = 56.7;
+	//myData.temp = 153.9;
+
+	myData.humidity = 100.8;
+    myData.temp = 288.8;
+
 	myData.hum_unit = PERCENT;
 	myData.temp_unit = DEGREE_CELSIUS;
 
-	displaySensorData(&myData);
+	//displaySensorData(&myData);
 
-	//EPD_1in9_test();
+	EPD_1in9_test();
 
 	//printf("ePaper test complete. Entering idle loop.\r\n");
 

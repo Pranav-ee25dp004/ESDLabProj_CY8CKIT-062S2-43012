@@ -31,28 +31,38 @@
 #include "EPD_Test.h"
 #include "EPD_1in9.h"
 
-char digtCode[10][2] = {
-		{	0xbf	,	0x1f	},	//Digit 	0
-		{	0x00	,	0x1f	},	//Digit 	1
-		{	0xfd	,	0x17	},	//Digit 	2
-		{	0xf5	,	0x1f	},	//Digit 	3
-		{	0x47	,	0x1f	},	//Digit 	4
-		{	0xf7	,	0x1d	},	//Digit 	5
-		{	0xff	,	0x1d	},	//Digit 	6
-		{	0x21	,	0x1f	},	//Digit 	7
-		{	0xff	,	0x1f	},	//Digit 	8
-		{	0xf7	,	0x1f	},	//Digit 	9
+const char digtCode[20][2] = {
+		{ 0xbf	, 0x1f },	//Digit 	0
+		{ 0x00	, 0x1f },	//Digit 	1
+		{ 0xfd	, 0x17 },	//Digit 	2
+		{ 0xf5	, 0x1f },	//Digit 	3
+		{ 0x47	, 0x1f },	//Digit 	4
+		{ 0xf7	, 0x1d },	//Digit 	5
+		{ 0xff	, 0x1d },	//Digit 	6
+		{ 0x21	, 0x1f },	//Digit 	7
+		{ 0xff	, 0x1f },	//Digit 	8
+		{ 0xf7	, 0x1f },	//Digit 	9
+
+		{ 0x7f , 0x1f }, //Char A
+		{ 0xFF , 0x0A }, //Char B
+		{ 0xBF , 0x11 }, //Char C
+		{ 0xBF , 0x0E }, //Char D
+		{ 0xFF , 0x11 }, //Char E
+		{ 0x7F , 0x01 }, //Char F
+		{ 0xBF , 0x1C }, //Char G
+		{ 0x5F , 0x1f }  //Char H
+
 };
 
 
 char i2cData[15] = {0x00,  // Temp Digit 3
-			0x00, 0x00, // Temp Digit 2
-			0x00, 0x00, // Temp Digit 1
-			0x00, 0x00, // Temp Digit 0
-			0x00, 0x00, // Hum Digit 2
-			0x00, 0x00, // Hum Digit 1
-			0x00, 0x00, // Hum Digit
-			0x00, 0x00,};  // 1
+		0x00, 0x00, // Temp Digit 2
+		0x00, 0x00, // Temp Digit 1
+		0x00, 0x00, // Temp Digit 0
+		0x00, 0x00, // Hum Digit 2
+		0x00, 0x00, // Hum Digit 1
+		0x00, 0x00, // Hum Digit
+		0x00, 0x00,};  // 1
 
 sensor_reading senseData ={0};
 
@@ -123,7 +133,49 @@ int EPD_1in9_test(void)
 	DEV_Delay_ms(500);
 	a(DSPNUM_1in9_W9);
 	EPD_1in9_Write_Screen(b);
+
+	// Added by Pranav
+	a(DSPNUM_1in9_WAc); // A
+	EPD_1in9_Write_Screen(b);
 	DEV_Delay_ms(500);
+
+	a(DSPNUM_1in9_WBc); // B
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+	a(DSPNUM_1in9_WCc); // E
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+	a(DSPNUM_1in9_WDc); // D
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+
+	a(DSPNUM_1in9_WEc); //E
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+	a(DSPNUM_1in9_WFc); // F
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+	a(DSPNUM_1in9_WGc); // G
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+	a(DSPNUM_1in9_WHc); // H
+	EPD_1in9_Write_Screen(b);
+	DEV_Delay_ms(500);
+
+/*	for(b[1]=0xFF; b[1]>=0; b[1] = b[1]>>1){
+
+		EPD_1in9_Write_Screen(b);
+		DEV_Delay_ms(500);
+
+	}*/
+
+
 	a(DSPNUM_1in9_WB);
 	EPD_1in9_Write_Screen(b);
 	DEV_Delay_ms(500);
@@ -165,54 +217,85 @@ void displaySensorData(sensor_reading* data){
 
 	int digits[4] = {0};
 
-	if(fabs(data->temp-senseData.temp) > 0.1){
-        senseData.temp = data->temp;
-        extract_digits(senseData.temp, digits);
+	// Temperature Digits
 
-		  i2cData[0] = digtCode[digits[3]][1];
-		  i2cData[1] = digtCode[digits[2]][0];
-		  i2cData[2] = digtCode[digits[2]][1];
-		  i2cData[3] = digtCode[digits[1]][0];
-		  i2cData[4] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
-		  i2cData[11] = digtCode[digits[0]][0];
-		  i2cData[12] = digtCode[digits[0]][1];
+	if(fabs(data->temp-senseData.temp) > 0.1){
+		senseData.temp = data->temp;
+		extract_temp_digits(senseData.temp, digits);
+
+		i2cData[0] = digtCode[digits[3]][1];
+		i2cData[1] = digtCode[digits[2]][0];
+		i2cData[2] = digtCode[digits[2]][1];
+		i2cData[3] = digtCode[digits[1]][0];
+		i2cData[4] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
+		i2cData[11] = digtCode[digits[0]][0];
+		i2cData[12] = digtCode[digits[0]][1];
+	}
+
+	// Humidity Digits
+
+	if(fabs(data->humidity-senseData.humidity) > 0.1){
+		senseData.humidity = data->humidity;
+		extract_hum_digits(senseData.humidity, digits);
+		// humidity digits
+		i2cData[5] = digtCode[digits[2]][0];
+		i2cData[6] = digtCode[digits[2]][1];
+		i2cData[7] = digtCode[digits[1]][0];
+		i2cData[8] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
+		i2cData[9] = digtCode[digits[0]][0];
+		i2cData[10] = digtCode[digits[0]][1] | 0b00100000; /* percentage sign */;
 
 	}
 
-	if(fabs(data->humidity-senseData.humidity) > 0.1){
-	        senseData.humidity = data->humidity;
-	        extract_digits(senseData.humidity, digits);
-	        // humidity digits
-	        i2cData[5] = digtCode[digits[2]][0];
-	        i2cData[6] = digtCode[digits[2]][1];
-	        i2cData[7] = digtCode[digits[1]][0];
-	        i2cData[8] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
-	        i2cData[9] = digtCode[digits[0]][0];
-	        i2cData[10] = digtCode[digits[0]][1] | 0b00100000; /* percentage sign */;
-
-		}
+	// special symbols - °C / °F, bluetooth, battery
+	i2cData[13] = 0x05 /* °C */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
 
 
-
-
-//a(i2cData);
+	//a(i2cData);
 	EPD_1in9_Write_Screen(i2cData);
 	DEV_Delay_ms(500);
 }
 
 
-int extract_digits(float n, int d[]) {
-    if (n < 0 || n > 199.9) return -1;
+int extract_temp_digits(float n, int d[]) {
+	if (n < 0 || n > 199.9){
+		d[0] = 9;               // fractional
+		d[1] = 9;         // ones
+		d[2] = 9;   // tens
+		d[3] =  1;        // hundreds (0–1)
 
-    int i = (int)n;              // integer part
-    int f = (int)((n - i) * 10); // fractional digit
+		return -1;
+	}
 
-    d[0] = f;               // fractional
-    d[1] =  i % 10;         // ones
-    d[2] = (i / 10) % 10;   // tens
-    d[3] =  i / 100;        // hundreds (0–1)
+	int i = (int)n;              // integer part
+	int f = (int)((n - i) * 10); // fractional digit
 
-    return 4; // always 4 digits filled
+	d[0] = f;               // fractional
+	d[1] =  i % 10;         // ones
+	d[2] = (i / 10) % 10;   // tens
+	d[3] =  i / 100;        // hundreds (0–1)
+
+	return 4; // always 4 digits filled
+}
+
+int extract_hum_digits(float n, int d[]) {
+	if (n < 0 || n > 99.9){
+		d[0] = 9;               // fractional
+		d[1] = 9;         // ones
+		d[2] = 9;   // tens
+		d[3] = 0;        // hundreds (0–1)
+		return -1;
+	}
+
+	int i = (int)n;              // integer part
+	int f = (int)((n - i) * 10); // fractional digit
+
+	d[0] = f;               // fractional
+	d[1] =  i % 10;         // ones
+	d[2] = (i / 10) % 10;   // tens
+	d[3] =  0;        // hundreds (0–1)
+
+	return 4; // always 4 digits filled
 }
 
 

@@ -23,11 +23,6 @@ const unsigned char DSPNUM_W9[]   = {0x00, 0xf7, 0x1f, 0xf7, 0x1f, 0xf7, 0x1f, 0
 unsigned char VAR_Temperature=20; 
 
 
-//extern void i2c_write_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t data);
-//extern void i2c_write_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t data);
-//extern uint8_t i2c_read_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg);
-//extern void i2c_read_bytes(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t len);
-
 /******************************************************************************
 function :	Software reset
 parameter:
