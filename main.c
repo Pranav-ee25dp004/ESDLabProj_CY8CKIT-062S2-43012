@@ -24,9 +24,9 @@
  * Function Prototypes
  *******************************************************************************/
 void handle_error(uint32_t status);
-void i2c_write_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t data);
-uint8_t i2c_read_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg);
-void i2c_read_bytes(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t len);
+//void i2c_write_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t data);
+//uint8_t i2c_read_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg);
+//void i2c_read_bytes(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t len);
 
 /*******************************************************************************
  * Global Variables
@@ -42,28 +42,7 @@ void handle_error(uint32_t status)
 		CY_ASSERT(0);
 }
 
-/* Write single register (generic I2C) */
-void i2c_write_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t data)
-{
-	uint8_t buf[2] = {reg, data};
-	handle_error(cyhal_i2c_master_write(i2c, addr, buf, 2, 0, true));
-}
 
-/* Read single register (generic I2C) */
-uint8_t i2c_read_byte(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg)
-{
-	uint8_t value;
-	handle_error(cyhal_i2c_master_write(i2c, addr, &reg, 1, 0, true));
-	handle_error(cyhal_i2c_master_read(i2c, addr, &value, 1, 0, true));
-	return value;
-}
-
-/* Read multiple bytes (generic I2C) */
-void i2c_read_bytes(cyhal_i2c_t *i2c, uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t len)
-{
-	handle_error(cyhal_i2c_master_write(i2c, addr, &reg, 1, 0, true));
-	handle_error(cyhal_i2c_master_read(i2c, addr, buf, len, 0, true));
-}
 
 /*******************************************************************************
  * Main
@@ -116,7 +95,7 @@ int main(void)
 
 	displaySensorData(&myData);
 
-	EPD_1in9_test();
+	//EPD_1in9_test();
 
 	//printf("ePaper test complete. Entering idle loop.\r\n");
 

@@ -157,6 +157,8 @@ void epaperStartup()
 
 	// Load normal LUT for regular operation
 	EPD_1in9_lut_GC();
+
+	EPD_1in9_lut_DU_WB();
 }
 
 void displaySensorData(sensor_reading* data){
