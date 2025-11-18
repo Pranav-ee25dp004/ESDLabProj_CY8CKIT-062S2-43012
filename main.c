@@ -97,7 +97,7 @@ int main(void)
 	myData.hum_unit = PERCENT;
 	myData.temp_unit = DEGREE_CELSIUS;
 
-	//displaySensorData(&myData);
+	displaySensorData(&myData);
 
 	EPD_1in9_test();
 

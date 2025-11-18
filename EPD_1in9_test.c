@@ -248,7 +248,8 @@ void displaySensorData(sensor_reading* data){
 	}
 
 	// special symbols - °C / °F, bluetooth, battery
-	i2cData[13] = 0x05 /* °C */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
+	//i2cData[13] = 0x05 /* °C */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
+	i2cData[13] = 0x06 /* °F */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
 
 
 	//a(i2cData);
