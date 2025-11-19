@@ -168,7 +168,7 @@ int EPD_1in9_test(void)
 	EPD_1in9_Write_Screen(b);
 	DEV_Delay_ms(500);
 
-/*	for(b[1]=0xFF; b[1]>=0; b[1] = b[1]>>1){
+	/*	for(b[1]=0xFF; b[1]>=0; b[1] = b[1]>>1){
 
 		EPD_1in9_Write_Screen(b);
 		DEV_Delay_ms(500);
@@ -219,7 +219,7 @@ void displaySensorData(sensor_reading* data){
 
 	// Temperature Digits
 
-	if(fabs(data->temp-senseData.temp) > 0.1){
+	//if(fabs(data->temp-senseData.temp) > 0.05){
 		senseData.temp = data->temp;
 		extract_temp_digits(senseData.temp, digits);
 
@@ -230,11 +230,11 @@ void displaySensorData(sensor_reading* data){
 		i2cData[4] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
 		i2cData[11] = digtCode[digits[0]][0];
 		i2cData[12] = digtCode[digits[0]][1];
-	}
+	//}
 
 	// Humidity Digits
 
-	if(fabs(data->humidity-senseData.humidity) > 0.1){
+	//if(fabs(data->humidity-senseData.humidity) > 0.05){
 		senseData.humidity = data->humidity;
 		extract_hum_digits(senseData.humidity, digits);
 		// humidity digits
@@ -245,7 +245,7 @@ void displaySensorData(sensor_reading* data){
 		i2cData[9] = digtCode[digits[0]][0];
 		i2cData[10] = digtCode[digits[0]][1] | 0b00100000; /* percentage sign */;
 
-	}
+	//}
 
 	// special symbols - °C / °F, bluetooth, battery
 	//i2cData[13] = 0x05 /* °C */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
@@ -259,7 +259,16 @@ void displaySensorData(sensor_reading* data){
 
 
 int extract_temp_digits(float n, int d[]) {
-	if (n < 0 || n > 199.9){
+	if (n < 0){
+		d[0] = 0;               // fractional
+		d[1] = 0;         // ones
+		d[2] = 0;   // tens
+		d[3] = 0;        // hundreds (0–1)
+
+		return -1;
+	}
+
+	if (n > 199.9){
 		d[0] = 9;               // fractional
 		d[1] = 9;         // ones
 		d[2] = 9;   // tens
@@ -280,12 +289,20 @@ int extract_temp_digits(float n, int d[]) {
 }
 
 int extract_hum_digits(float n, int d[]) {
-	if (n < 0 || n > 99.9){
+	if (n < 0){
+		d[0] = 0;               // fractional
+		d[1] = 0;         // ones
+		d[2] = 0;   // tens
+		d[3] = 0;        // hundreds (0–1)
+		return -1;
+	}
+
+	if (n > 99.9){
 		d[0] = 9;               // fractional
 		d[1] = 9;         // ones
 		d[2] = 9;   // tens
 		d[3] = 0;        // hundreds (0–1)
-		return -1;
+		return -2;
 	}
 
 	int i = (int)n;              // integer part

@@ -79,29 +79,28 @@ int main(void)
 		CY_ASSERT(0);
 	}
 
-	//epaperStartup();
 
 	//printf("Running ePaper test sequence...\r\n");
 
 	/* === Run ePaper test === */
-	//EPD_1in9_test();
-	//EPD_1in9_();
+	EPD_1in9_test();                // Refresh the display (if required)
 
+	// If above function not called before then uncomment following for temeprature demo:
+	//epaperStartup();
+
+	/* === Automated Test Case: Sweep Temperature and Humidity === */
 	sensor_reading myData;
-	//myData.humidity = 56.7;
-	//myData.temp = 153.9;
-
-	myData.humidity = 100.8;
-    myData.temp = 288.8;
-
-	myData.hum_unit = PERCENT;
+	myData.hum_unit  = PERCENT;
 	myData.temp_unit = DEGREE_CELSIUS;
 
-	displaySensorData(&myData);
+	for (int i = -1, j = -1; i <= 2000 && j <= 1000; i++, j++)
+	{
+	    myData.temp += 0.1f;  // incement by 0.5
+	    myData.humidity += 0.1f; // increment by 0.1
 
-	EPD_1in9_test();
+	    displaySensorData(&myData);
+	}
 
-	//printf("ePaper test complete. Entering idle loop.\r\n");
 
 	/* === Idle Loop === */
 	while (true)
