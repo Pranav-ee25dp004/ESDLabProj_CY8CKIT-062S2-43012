@@ -220,30 +220,37 @@ void displaySensorData(sensor_reading* data){
 	// Temperature Digits
 
 	//if(fabs(data->temp-senseData.temp) > 0.05){
-		senseData.temp = data->temp;
-		extract_temp_digits(senseData.temp, digits);
+	senseData.temp = data->temp;
+	extract_temp_digits(senseData.temp, digits);
+
+	if(digits[3] == 0){
+		i2cData[0] = 0x00;
+
+	}
+	else{
 
 		i2cData[0] = digtCode[digits[3]][1];
-		i2cData[1] = digtCode[digits[2]][0];
-		i2cData[2] = digtCode[digits[2]][1];
-		i2cData[3] = digtCode[digits[1]][0];
-		i2cData[4] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
-		i2cData[11] = digtCode[digits[0]][0];
-		i2cData[12] = digtCode[digits[0]][1];
+	}
+	i2cData[1] = digtCode[digits[2]][0];
+	i2cData[2] = digtCode[digits[2]][1];
+	i2cData[3] = digtCode[digits[1]][0];
+	i2cData[4] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
+	i2cData[11] = digtCode[digits[0]][0];
+	i2cData[12] = digtCode[digits[0]][1];
 	//}
 
 	// Humidity Digits
 
 	//if(fabs(data->humidity-senseData.humidity) > 0.05){
-		senseData.humidity = data->humidity;
-		extract_hum_digits(senseData.humidity, digits);
-		// humidity digits
-		i2cData[5] = digtCode[digits[2]][0];
-		i2cData[6] = digtCode[digits[2]][1];
-		i2cData[7] = digtCode[digits[1]][0];
-		i2cData[8] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
-		i2cData[9] = digtCode[digits[0]][0];
-		i2cData[10] = digtCode[digits[0]][1] | 0b00100000; /* percentage sign */;
+	senseData.humidity = data->humidity;
+	extract_hum_digits(senseData.humidity, digits);
+	// humidity digits
+	i2cData[5] = digtCode[digits[2]][0];
+	i2cData[6] = digtCode[digits[2]][1];
+	i2cData[7] = digtCode[digits[1]][0];
+	i2cData[8] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
+	i2cData[9] = digtCode[digits[0]][0];
+	i2cData[10] = digtCode[digits[0]][1] | 0b00100000; /* percentage sign */;
 
 	//}
 
