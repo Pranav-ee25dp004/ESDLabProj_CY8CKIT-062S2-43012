@@ -231,10 +231,12 @@ void displaySensorData(sensor_reading* data){
 
 		i2cData[0] = digtCode[digits[3]][1];
 	}
+
+
 	i2cData[1] = digtCode[digits[2]][0];
 	i2cData[2] = digtCode[digits[2]][1];
 	i2cData[3] = digtCode[digits[1]][0];
-	i2cData[4] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
+	i2cData[4] = digtCode[digits[1]][1] | ((digits[0] % 2 == 0) ? 0b00100000 : 0x00); /* decimal point */;
 	i2cData[11] = digtCode[digits[0]][0];
 	i2cData[12] = digtCode[digits[0]][1];
 	//}
@@ -248,15 +250,26 @@ void displaySensorData(sensor_reading* data){
 	i2cData[5] = digtCode[digits[2]][0];
 	i2cData[6] = digtCode[digits[2]][1];
 	i2cData[7] = digtCode[digits[1]][0];
-	i2cData[8] = digtCode[digits[1]][1] | 0b00100000; /* decimal point */;
+	i2cData[8] = digtCode[digits[1]][1] | ((digits[0] % 2 != 0) ? 0b00100000 : 0x00); /* decimal point */;
 	i2cData[9] = digtCode[digits[0]][0];
-	i2cData[10] = digtCode[digits[0]][1] | 0b00100000; /* percentage sign */;
+	i2cData[10] = digtCode[digits[0]][1] | ((digits[0] % 3 == 0) ? 0b00100000 : 0x00); /* percentage sign */;
 
 	//}
 
 	// special symbols - °C / °F, bluetooth, battery
 	//i2cData[13] = 0x05 /* °C */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
-	i2cData[13] = 0x06 /* °F */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
+	//i2cData[13] = 0x06 /* °F */ | 0b00001000 /* bluetooth */ | 0b00010000 /* battery icon */;
+
+	i2cData[13] =
+		    /* degree symbol */
+		    ((digits[0] == 5 || digits[0] == 6 || digits[0] == 7) ? digits[0] : 0x00)
+
+		    /* bluetooth (bit 3) */
+		    | ((digits[0] % 4 == 0) ? 0b00001000 : 0x00)
+
+		    /* battery (bit 4) */
+		    | ((digits[0] == 1) ? 0b00010000 : 0x00);
+
 
 
 	//a(i2cData);

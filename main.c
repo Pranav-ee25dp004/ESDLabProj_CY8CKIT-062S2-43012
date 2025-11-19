@@ -90,10 +90,12 @@ int main(void)
 
 	/* === Automated Test Case: Sweep Temperature and Humidity === */
 	sensor_reading myData;
-	myData.hum_unit  = PERCENT;
-	myData.temp_unit = DEGREE_CELSIUS;
+	//myData.hum_unit  = PERCENT;
+	//myData.temp_unit = DEGREE_CELSIUS;
+	myData.temp = 0.0f;  // incement by 0.5
+    myData.humidity = 0.0f; // increment by 0.1
 
-	for (int i = -1, j = -1; i <= 2000 && j <= 1000; i++, j++)
+	for (int i = 0, j = 0; i <= 2000 && j <= 1000; i++, j++)
 	{
 	    myData.temp += 0.1f;  // incement by 0.5
 	    myData.humidity += 0.1f; // increment by 0.1
